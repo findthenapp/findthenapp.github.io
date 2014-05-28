@@ -127,10 +127,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
     <script>
-        var isChromeDesktop = browserInfo.indexOf('Chrome')>0 && (typeof window.orientation === "undefined");
-        var browserInfo = window.navigator.userAgent;
+        var isChromeDesktop = window.navigator.userAgent.indexOf('Chrome')>0 && (typeof window.orientation === "undefined");
         var installUrl = "https://chrome.google.com/webstore/detail/findthen/ochjhdhmdpcploepkjmflgifacmikgoe";
-        
         
         $('#StartSaving').click(function(){
             if(isChromeDesktop){
