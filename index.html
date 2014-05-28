@@ -92,7 +92,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>FindThen</h2>
                     <p>is a browser add-on which automatically finds best prices from leading online stores such as Flipkart, Amazon, Snapdeal, HomeShop18, Ebay and many other stores</p>
-                    <a onclick="chrome.webstore.install()" class="btn btn-default btn-lg">Start Saving !</a>
+                    <a class="btn btn-default btn-lg" id="StartSaving">Start Saving !</a>
                 </div>
             </div>
         </div>
@@ -127,6 +127,31 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
     <script>
+        var isChromeDesktop = 0;
+        var browserInfo = window.navigator.userAgent;
+        var installUrl = "https://chrome.google.com/webstore/detail/findthen/ochjhdhmdpcploepkjmflgifacmikgoe";
+        
+        if(browserInfo.indexOf('Chrome')>0 && (typeof window.orientation === "undefined")) {
+            isChromeDesktop = 1;
+        }
+        
+        $('#StartSaving').click(function(){
+            if(isChromeDeskTop){
+                chrome.webstore.install(installUrl,installSuccess,installFailure);
+                return false;
+            }
+            else{
+                window.open(installUrl);
+            }
+        });
+        
+        function installSuccess(){
+            
+        }
+        
+        function installFailure(){
+            window.open(installUrl);
+        }
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
